@@ -1,26 +1,19 @@
-# Ember-router-service
+# ember-router-service
+[![npm version](https://badge.fury.io/js/ember-router-service.svg)](https://badge.fury.io/js/ember-router-service)
+[![Build Status](https://travis-ci.org/kellyselden/ember-router-service.svg?branch=master)](https://travis-ci.org/kellyselden/ember-router-service)
 
-This README outlines the details of collaborating on this Ember addon.
+service:router alias for router:main
 
-## Installation
+### Usage
 
-* `git clone` this repository
-* `npm install`
-* `bower install`
+```js
+export default Ember.Component.extend({
+  router: Ember.inject.service(),
 
-## Running
-
-* `ember serve`
-* Visit your app at http://localhost:4200.
-
-## Running Tests
-
-* `npm test` (Runs `ember try:testall` to test your addon against multiple Ember versions)
-* `ember test`
-* `ember test --server`
-
-## Building
-
-* `ember build`
-
-For more information on using ember-cli, visit [http://ember-cli.com/](http://ember-cli.com/).
+  actions: {
+    goSomewhere() {
+      this.get('router.router').transitionTo('somewhere-else');
+    }
+  }
+});
+```

@@ -1,6 +1,6 @@
 {
   "name": "ember-router-service",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "service:router alias for router:main",
   "directories": {
     "doc": "doc",

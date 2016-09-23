@@ -8,9 +8,20 @@ export function initialize(appInstance) {
     lookupSource = appInstance.container;
   }
 
+  let { application } = appInstance;
+  let fullName = 'service:router';
+
+  // skip fastboot check if ember 1.13
+  if (application.hasRegistration) {
+    // fastboot support
+    if (application.hasRegistration(fullName)) {
+      return;
+    }
+  }
+
   let router = lookupSource.lookup('router:main');
 
-  appInstance.application.register('service:router', router, { singleton: true, instantiate: false });
+  application.register(fullName, router, { singleton: true, instantiate: false });
 }
 
 export default {

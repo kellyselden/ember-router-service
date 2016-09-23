@@ -32,3 +32,16 @@ test('can lookup service', function(assert) {
 
   assert.ok(router.transitionTo);
 });
+
+test('doesn\'t error when run multiple times (fastboot support)', function(assert) {
+  if (!this.appInstance.hasRegistration) {
+    // skip fastboot check if ember 1.13
+    assert.ok(true);
+    return;
+  }
+
+  initialize(this.appInstance);
+  initialize(this.appInstance);
+
+  assert.ok(this.appInstance.hasRegistration('service:router'));
+});

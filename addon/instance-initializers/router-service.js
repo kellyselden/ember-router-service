@@ -1,15 +1,16 @@
-export function initialize(instance) {
+export function initialize(appInstance) {
   let lookupSource;
 
-  if (instance.lookup) {
-    lookupSource = instance;
+  if (appInstance.lookup) {
+    lookupSource = appInstance;
   } else {
-    lookupSource = instance.container;
+    // ember 1.13 support
+    lookupSource = appInstance.container;
   }
 
   let router = lookupSource.lookup('router:main');
 
-  instance.application.register('service:router', router, { singleton: true, instantiate: false });
+  appInstance.application.register('service:router', router, { singleton: true, instantiate: false });
 }
 
 export default {
